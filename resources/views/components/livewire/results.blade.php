@@ -58,7 +58,7 @@
                         @endif
 
                         {{-- Workday --}}
-                        <x-search.sections.info :value="to_workday($result?->workday_id)" icon="clock"></x-search.sections.info>
+                        <x-search.sections.info :value="to_workday($result?->workday_type)" icon="clock"></x-search.sections.info>
 
                         {{-- Source --}}
                         <x-search.sections.info :value="$result?->source" icon="cursor-click"></x-search.sections.info>

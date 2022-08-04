@@ -136,7 +136,7 @@ class CollectorJob extends AbstractCollectorJob implements ShouldQueue
             'salary_min' => $salary_min,
             'salary_currency' => '€',
             'salary_year' => $salary_year,
-            'workday_id' => $workday,
+            'workday_type' => $workday,
             'category_id' => $category_id,
             'language_id' => $this->language_id ?? null,
             'partner_id' => $this->partnerID,

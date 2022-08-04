@@ -87,7 +87,7 @@ trait OfferService
             })
             ->when($workday, function($query, $workday) {
                 foreach($workday as $key => $value) {
-                    $query->whereJsonContains('workday_id', $value);
+                    $query->whereJsonContains('workday_type', $value);
                 }
             })
             ->orderBy('jrank', 'desc')

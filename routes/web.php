@@ -53,7 +53,7 @@ Route::get('/dashboard', DashboardController::class)
     ->middleware(['auth'])
     ->name('dashboard');
 
-Route::get('/pruebas', function () {
+Route::get('/update', function () {
     $categories = \App\Models\Category::get();
 
     app(\App\Http\Collectors\Opcionempleo\Collector::class)
