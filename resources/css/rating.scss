@@ -1,0 +1,18 @@
+@layer components {
+    .rating {
+        @apply relative m-0 mt-2 p-0 text-gray-300;
+        unicode-bidi: bidi-override;
+        font-size: 15px;
+        width: 60px;
+    }
+
+    .rating-upper {
+        @apply absolute flex top-0 left-0 p-0 text-blue-600 overflow-hidden;
+        z-index: 1;
+    }
+
+    .rating-lower {
+        @apply flex p-0;
+        z-index: 0;
+    }
+  }
