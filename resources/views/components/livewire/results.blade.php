@@ -9,7 +9,13 @@
     {{-- Results --}}
     <section id="search-results" class="w-full m-0 md:ml-8">
 
-        @if($results->count() > 0)
+        {{-- Loading --}}
+        <x-livewire.loading.results></x-livewire.loading.results>
+
+        {{-- Current results --}}
+        <div wire:loading.remove>
+            {{-- Results --}}
+            @if($results->count() > 0)
 
             {{-- Search title --}}
             @if($config->get('section') === 'search')
@@ -121,6 +127,9 @@
                 </div>
             </div>
         @endif
+        </div>
+
+
 
     {{-- /Results --}}
     </section>
