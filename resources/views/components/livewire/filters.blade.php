@@ -17,7 +17,7 @@
                     type="checkbox"
                     class="focus:ring-yellow-500 h-4 w-4 text-yellow-600 border-gray-300 rounded"
                 >
-                <span class="ml-2">{{ $value }}</span>
+                <span class="ml-2 text-yellow-700">{{ $value }}</span>
             </div>
         @endforeach
     </div>
