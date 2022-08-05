@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Test;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
@@ -63,5 +64,8 @@ Route::get('/update', function () {
         ->execute($categories);
 });
 
+Route::get('/test', function() {
+    return view('test');
+});
 
 require __DIR__.'/auth.php';

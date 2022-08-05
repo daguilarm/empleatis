@@ -66,7 +66,6 @@ if (! function_exists('to_workday')) {
         $data = explode(',', $data);
 
         foreach ($data as $value) {
-
             $value = trim($value);
 
             if (isset($list[$value])) {

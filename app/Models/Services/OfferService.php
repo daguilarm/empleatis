@@ -75,9 +75,9 @@ trait OfferService
                         $query->where('province_id', $province);
                     });
             })
-            ->when($workday, function($query, $workday) {
-                foreach($workday as $value) {
-                    $query->where('workday_type', 'LIKE', '%' . $value . '%');
+            ->when($workday, function ($query, $workday) {
+                foreach ($workday as $value) {
+                    $query->orWhere('workday_type', 'LIKE', '%'.$value.'%');
                 }
             })
             ->when($search, function ($query, $search): void {
@@ -87,8 +87,8 @@ trait OfferService
             })
             ->when($search, function ($query, $search) {
                 $query
-                    ->where('title', 'like', ' %' . $search . '% ')
-                    ->orWhere('description', 'like', ' %' . $search . '% ');
+                    ->where('title', 'like', ' %'.$search.'% ')
+                    ->orWhere('description', 'like', ' %'.$search.'% ');
             })
             ->orderBy('jrank', 'desc')
             ->orderBy('salary_year', 'desc');

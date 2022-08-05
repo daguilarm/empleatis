@@ -4,25 +4,32 @@ namespace App\Http\Collectors\_Traits;
 
 trait Optionable
 {
+    private string $workingDayDefault = '3';
+
     /**
      * Get the working day type
      */
-    private function calculateWorkingDay(string $value): string
+    private function calculateWorkingDay(?string $value = null): string
     {
+        // No results
+        if (! $value) {
+            return $this->workingDayDefault;
+        }
+
         // Values from config file
-        $config = config('empleatis.working_day');
+        $config = config('empleatis.workday_type');
 
         // Get and format all values from config file
         $values = str($value)
             ->explode(',')
             ->map(function ($value) {
-                return trim($value);
+                return ucfirst(trim($value));
             })
             ->toArray();
 
         // Generate an array with all the values.
         // An offert can has multiples values.
-        return collect($config)
+        $results = collect($config)
             ->map(function ($name, $key) use ($values) {
                 foreach ($values as $value) {
                     if (in_array($value, $name)) {
@@ -33,5 +40,7 @@ trait Optionable
             ->filter()
             ->values()
             ->implode(',');
+
+        return $results ?? $this->workingDayDefault;
     }
 }

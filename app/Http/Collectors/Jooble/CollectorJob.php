@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace App\Http\Collectors\Jooble;
 
-use App\Models\Offer;
-use Illuminate\Bus\Queueable;
-use App\Http\Collectors\Ranking;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use App\Http\Collectors\_Traits\Errorable;
-use App\Http\Collectors\_Traits\Helpeable;
 use App\Http\Collectors\_Traits\Filterable;
+use App\Http\Collectors\_Traits\Helpeable;
 use App\Http\Collectors\_Traits\Optionable;
 use App\Http\Collectors\_Traits\Regionable;
+use App\Http\Collectors\_Traits\Requestable;
 use App\Http\Collectors\_Traits\Salaryable;
+use App\Http\Collectors\AbstractCollectorJob;
+use App\Http\Collectors\Ranking;
+use App\Models\Offer;
+use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use App\Http\Collectors\_Traits\Requestable;
-use App\Http\Collectors\AbstractCollectorJob;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
 class CollectorJob extends AbstractCollectorJob implements ShouldQueue
 {

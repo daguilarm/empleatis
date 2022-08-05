@@ -7,6 +7,7 @@ namespace App\Http\Collectors\Opcionempleo;
 use App\Http\Collectors\_Traits\Errorable;
 use App\Http\Collectors\_Traits\Filterable;
 use App\Http\Collectors\_Traits\Helpeable;
+use App\Http\Collectors\_Traits\Optionable;
 use App\Http\Collectors\_Traits\Regionable;
 use App\Http\Collectors\_Traits\Requestable;
 use App\Http\Collectors\_Traits\Salaryable;
@@ -22,7 +23,7 @@ use Illuminate\Queue\SerializesModels;
 class CollectorJob extends AbstractCollectorJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    use Errorable, Filterable, Helpeable, Regionable, Requestable, Salaryable;
+    use Errorable, Filterable, Helpeable, Optionable, Regionable, Requestable, Salaryable;
 
     /**
      * Set the partner ID
@@ -132,7 +133,7 @@ class CollectorJob extends AbstractCollectorJob implements ShouldQueue
             'salary_min' => $salary_min,
             'salary_year' => $salary_year,
             'salary_currency' => $values->salary_currency_code ?? '',
-            'workday_type' => '3',
+            'workday_type' => self::calculateWorkingDay(),
             'category_id' => $category_id,
             'language_id' => $this->language_id ?? null,
             'partner_id' => $this->partnerID,
