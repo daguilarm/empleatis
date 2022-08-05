@@ -4,7 +4,7 @@ import {defineConfig} from 'vite'
 import {homedir} from 'os'
 import {resolve} from 'path'
 
-let host = 'empleo.test'
+let host = 'empleatis.test'
 
 export default defineConfig({
     plugins: [

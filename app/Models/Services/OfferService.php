@@ -61,18 +61,8 @@ trait OfferService
             ->when($language, function ($query, $language): void {
                 $query->whereLanguageId($language);
             })
-            ->when($search, function ($query, $search): void {
-                $query
-                    ->where('title', 'LIKE', '%'.$search.'%')
-                    ->orWhere('description', 'LIKE', '%'.$search.'%');
-            })
             ->when($province, function ($query, $province): void {
                 $query->whereProvinceId($province);
-            })
-            ->when($search, function ($query, $search) {
-                $query
-                    ->where('title', 'like', ' %'.$search.'% ')
-                    ->orWhere('description', 'like', ' %'.$search.'% ');
             })
             ->when($locations, function ($query, $locations) {
 
@@ -86,9 +76,19 @@ trait OfferService
                     });
             })
             ->when($workday, function($query, $workday) {
-                foreach($workday as $key => $value) {
-                    $query->whereJsonContains('workday_type', $value);
+                foreach($workday as $value) {
+                    $query->where('workday_type', 'LIKE', '%' . $value . '%');
                 }
+            })
+            ->when($search, function ($query, $search): void {
+                $query
+                    ->where('title', 'LIKE', '%'.$search.'%')
+                    ->orWhere('description', 'LIKE', '%'.$search.'%');
+            })
+            ->when($search, function ($query, $search) {
+                $query
+                    ->where('title', 'like', ' %' . $search . '% ')
+                    ->orWhere('description', 'like', ' %' . $search . '% ');
             })
             ->orderBy('jrank', 'desc')
             ->orderBy('salary_year', 'desc');
