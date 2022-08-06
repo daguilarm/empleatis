@@ -19,3 +19,15 @@ if (! function_exists('filter_values')) {
         return json_encode($filter);
     }
 }
+
+/**
+ * Get the filters
+ */
+if (! function_exists('filter_workday')) {
+    function filter_workday(array $data): array
+    {
+        $data[1] = 'Temporal/por horas';
+
+        return $data;
+    }
+}

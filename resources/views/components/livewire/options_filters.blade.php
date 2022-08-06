@@ -1,5 +1,5 @@
 @php
-    $workingDay = config('empleatis.workday_type');
+    $workingDay = filter_workday(config('empleatis.workday_type'));
     $salaryIntervals = config('empleatis.salary_intervals');
 @endphp
 

@@ -10,7 +10,7 @@
         <button
             x-on:click="showBeta = ! showBeta"
             class="text-base text-blue-900 hover:text-red-700 font-bold"
-        >Beta</button>
+        >Beta <span class="text-xs">v{{ config('empleatis.version') }}</span></button>
         <div
             x-show="showBeta"
             x-cloak

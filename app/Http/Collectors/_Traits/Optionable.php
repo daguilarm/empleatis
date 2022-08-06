@@ -32,7 +32,7 @@ trait Optionable
         $results = collect($config)
             ->map(function ($name, $key) use ($values) {
                 foreach ($values as $value) {
-                    if (in_array($value, $name)) {
+                    if (strtolower($value) === strtolower($name)) {
                         return $key;
                     }
                 }
