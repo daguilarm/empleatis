@@ -24,7 +24,7 @@ class Search extends Component
     public function mount(Collection $config): void
     {
         $this->config = $config;
-        $this->optionFields = [null];
+        $this->optionFields = [null, null, null, null, null];
     }
 
     /**

@@ -11,7 +11,7 @@
         <div>Filtros</div>
     </h4>
 
-    @if($config->get('section') === 'search')
+    @if($config->get('section') !== 'home')
         <livewire:filters></livewire:filters>
     @endif
 

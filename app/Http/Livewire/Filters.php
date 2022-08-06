@@ -10,10 +10,12 @@ class Filters extends Component
 {
     public array $workday = [];
 
+    public ?int $salary = null;
+
     public function render()
     {
-        $this->emit('optionFields', [$this->workday]);
+        $this->emit('optionFields', [$this->workday, $this->salary]);
 
-        return view('components.livewire.filters');
+        return view('components.livewire.options_filters');
     }
 }

@@ -33,12 +33,12 @@ trait OfferService
     /**
      * Search jobs
      */
-    public function scopeSearchOffers(Builder $query, array $idFields = [null, null, null], array $searchFields = [null, null], array $optionFields = [null], bool $is_search = false): Builder
+    public function scopeSearchOffers(Builder $query, array $idFields = [null, null, null], array $searchFields = [null, null], array $optionFields = [null, null, null, null, null], bool $is_search = false): Builder
     {
         // Get the values
         [$category, $province, $language] = $idFields;
         [$search, $locations] = $searchFields;
-        [$workday] = $optionFields;
+        [$workday, $salary] = $optionFields;
 
         // Empty results
         if ($is_search && is_null($search) && is_null($locations)) {
@@ -76,19 +76,24 @@ trait OfferService
                     });
             })
             ->when($workday, function ($query, $workday) {
-                foreach ($workday as $value) {
-                    $query->orWhere('workday_type', 'LIKE', '%'.$value.'%');
-                }
+                $query->where(function($query) use ($workday) {
+                    foreach ($workday as $value) {
+                        $query->orWhere('workday_type', 'LIKE', '%' . $value . '%');
+                    }
+                });
+            })
+            ->when($salary, function($query, $salary) {
+                return $this->betweenSalary($query, $salary);
             })
             ->when($search, function ($query, $search): void {
                 $query
-                    ->where('title', 'LIKE', '%'.$search.'%')
-                    ->orWhere('description', 'LIKE', '%'.$search.'%');
+                    ->whereFullText('title', $search)
+                    ->orWhereFullText('description', $search);
             })
             ->when($search, function ($query, $search) {
                 $query
-                    ->where('title', 'like', ' %'.$search.'% ')
-                    ->orWhere('description', 'like', ' %'.$search.'% ');
+                    ->whereFullText('title', $search)
+                    ->orWhereFullText('description', $search);
             })
             ->orderBy('jrank', 'desc')
             ->orderBy('salary_year', 'desc');
@@ -131,5 +136,24 @@ trait OfferService
         return Attribute::make(
             get: fn ($value) => $this->updated_at->diffInDays($this->date),
         );
+    }
+
+    private function betweenSalary(Builder $query, ?int $salary)
+    {
+        if($salary) {
+            return match($salary) {
+                1 => $query->where('salary_year', '>=', '40000'),
+                2 => $query->whereBetween('salary_year', [35000, 40000]),
+                3 => $query->whereBetween('salary_year', [30000, 35000]),
+                4 => $query->whereBetween('salary_year', [25000, 30000]),
+                5 => $query->whereBetween('salary_year', [20000, 25000]),
+                6 => $query->whereBetween('salary_year', [10000, 20000]),
+                7 => $query->where('salary_year', '>', 0)->where('salary_year', '<', '10000'),
+                8 => $query->where(function($query) {
+                    $query->whereNull('salary_year')->orWhere('salary_year', '=', '');
+                }),
+                default => $query,
+            };
+        }
     }
 }
