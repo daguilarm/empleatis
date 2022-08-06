@@ -54,16 +54,6 @@ Route::get('/dashboard', DashboardController::class)
     ->middleware(['auth'])
     ->name('dashboard');
 
-Route::get('/update', function () {
-    $categories = \App\Models\Category::get();
-
-    app(\App\Http\Collectors\Opcionempleo\Collector::class)
-        ->execute($categories);
-
-    app(\App\Http\Collectors\Jooble\Collector::class)
-        ->execute($categories);
-});
-
 Route::get('/test', function() {
     return view('test');
 });
