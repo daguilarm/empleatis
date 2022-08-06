@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Livewire\Test;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LegalController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LanguageController;
@@ -19,40 +19,63 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-// Home Controller
-Route::get('/', HomeController::class)
-    ->middleware(['guest'])
-    ->name('home');
+/*
+|--------------------------------------------------------------------------
+| Base routes
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['guest'])
+    ->group(function () {
+        // Home Controller
+        Route::get('/', HomeController::class)
+            ->name('home');
 
-// Language Controller
-Route::get('/{section}/{categoryNameSlug}/{category}/lenguaje/{languageNameSlug}/{language}/{provinceNameSlug}/{province}', LanguageController::class)
-->middleware(['guest'])
-->name('languages.province');
+        // Language Controller
+        Route::get('/{section}/{categoryNameSlug}/{category}/lenguaje/{languageNameSlug}/{language}/{provinceNameSlug}/{province}', LanguageController::class)
+            ->name('languages.province');
 
-// Language Controller
-Route::get('/{section}/{categoryNameSlug}/{category}/lenguaje/{languageNameSlug}/{language}', LanguageController::class)
-->middleware(['guest'])
-->name('languages');
+        // Language Controller
+        Route::get('/{section}/{categoryNameSlug}/{category}/lenguaje/{languageNameSlug}/{language}', LanguageController::class)
+            ->name('languages');
 
-// Categories, Provinces Controller
-Route::get('/{section}/{categoryNameSlug}/{category}/{provinceNameSlug}/{province}', CategoryController::class)
-    ->middleware(['guest'])
-    ->name('provinces');
+        // Categories, Provinces Controller
+        Route::get('/{section}/{categoryNameSlug}/{category}/{provinceNameSlug}/{province}', CategoryController::class)
+            ->name('provinces');
 
-// Categories Controller
-Route::get('/{section}/{categoryNameSlug}/{category}', CategoryController::class)
-    ->middleware(['guest'])
-    ->name('categories');
+        // Categories Controller
+        Route::get('/{section}/{categoryNameSlug}/{category}', CategoryController::class)
+            ->name('categories');
 
-// Search Controller
-Route::get('/search', SearchController::class)
-    ->middleware(['guest'])
-    ->name('search');
+        // Search Controller
+        Route::get('/search', SearchController::class)
+            ->name('search');
+    });
 
-// Dashboard Controller
-Route::get('/dashboard', DashboardController::class)
-    ->middleware(['auth'])
-    ->name('dashboard');
+/*
+|--------------------------------------------------------------------------
+| Legal routes
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['guest'])
+    ->prefix('legal')
+    ->name('legal.')
+    ->group(function () {
+        // Privacy conditions
+        Route::get('/politica-privacidad', [LegalController::class, 'privacy'])
+            ->name('privacy');
+    });
+
+
+/*
+|--------------------------------------------------------------------------
+| Admin routes
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['auth'])->group(function () {
+    // Dashboard Controller
+    Route::get('/dashboard', DashboardController::class)
+        ->name('dashboard');
+});
 
 Route::get('/test', function() {
     return view('test');
