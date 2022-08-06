@@ -9,6 +9,8 @@ use App\Models\Language;
 
 class Collector extends AbstractCollectors
 {
+    private int $totalPages = 2;
+
     /**
      * Execute collector
      */
@@ -22,14 +24,14 @@ class Collector extends AbstractCollectors
                 $languageCategory = $category;
             } else {
                 // Proccess all the jobs
-                $this->executeJob($category, 3, null);
+                $this->executeJob($category, $this->totalPages, null);
             }
         }
 
         // Generate the jobs for programming languages
         foreach (Language::all() as $indexLanguage => $language) {
             // Proccess all the jobs
-            $this->executeJob($languageCategory, 2, $language);
+            $this->executeJob($languageCategory, $this->totalPages, $language);
         }
     }
 
