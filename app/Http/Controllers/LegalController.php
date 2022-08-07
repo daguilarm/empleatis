@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 class LegalController
 {
-    public function privacy()
+    public function privacity()
     {
-        return 'privacy';
+        return view('legal.privacity');
     }
 }

@@ -61,8 +61,8 @@ Route::middleware(['guest'])
     ->name('legal.')
     ->group(function () {
         // Privacy conditions
-        Route::get('/politica-privacidad', [LegalController::class, 'privacy'])
-            ->name('privacy');
+        Route::get('/politica-privacidad', [LegalController::class, 'privacity'])
+            ->name('privacity');
     });
 
 
