@@ -1,9 +1,0 @@
-<html>
-<head>
-    @livewireStyles
-</head>
-<body>
-    <livewire:test></livewire:test>
-    @livewireScripts
-</body>
-</html>

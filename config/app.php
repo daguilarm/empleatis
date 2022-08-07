@@ -16,7 +16,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Empleatis: Buscador de empleo y formación'),
-
+    'email' => env('APP_EMAIL', 'damian.aguilar@gmail.com'),
     /*
     |--------------------------------------------------------------------------
     | Application Environment

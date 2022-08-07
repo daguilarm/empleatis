@@ -1,10 +1,5 @@
 @extends('layouts.app')
 
-{{-- Meta tags --}}
-@section('metatags')
-
-@endsection
-
 @section('body')
     {{-- Background blue --}}
     <div class="bg-blue-200">

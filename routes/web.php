@@ -60,9 +60,17 @@ Route::middleware(['guest'])
     ->prefix('legal')
     ->name('legal.')
     ->group(function () {
+        // Cookies
+        Route::get('/politica-cookies', [LegalController::class, 'cookies'])
+            ->name('cookies');
+
         // Privacy conditions
         Route::get('/politica-privacidad', [LegalController::class, 'privacity'])
             ->name('privacity');
+
+        // Legal advice
+        Route::get('/aviso-legal', [LegalController::class, 'advice'])
+            ->name('advice');
     });
 
 
