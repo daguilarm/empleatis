@@ -36,7 +36,9 @@ class Saved extends Component
     public function render(): View
     {
         return view('components.livewire.saved')
-            ->withOffers($this->fromDatabase());
+            ->withOffers(
+                $this->fromDatabase()
+            );
     }
 
     /**
@@ -99,7 +101,9 @@ class Saved extends Component
     {
         $offers = self::getCookie();
 
-        return Offer::whereIn('id', $offers)->get();
+        return $offers
+            ? Offer::whereIn('id', $offers)->get()
+            : collect([]);
     }
 
     /**
