@@ -1,13 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LinkController;
-use App\Http\Controllers\LegalController;
-use App\Http\Controllers\SearchController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\LegalController;
+use App\Http\Controllers\LinkController;
+use App\Http\Controllers\SearchController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,7 +78,6 @@ Route::middleware(['guest'])
             ->name('advice');
     });
 
-
 /*
 |--------------------------------------------------------------------------
 | Admin routes
@@ -90,7 +89,7 @@ Route::middleware(['auth'])->group(function () {
         ->name('dashboard');
 });
 
-Route::get('/test', function() {
+Route::get('/test', function () {
     return view('test');
 });
 

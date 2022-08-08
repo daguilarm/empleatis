@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Configurable;
+use App\Http\Controllers\Traits\Configurable;
 
 class LegalController
 {

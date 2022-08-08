@@ -33,9 +33,9 @@ return new class extends Migration
             $table->integer('contract_id')->nullable(); // Contract type: indefinido, en practicas, etc...
             $table->string('workday_type')->default(0); // config/empleatis
             $table->string('salary')->nullable();
-            $table->float('salary_year', 10, 2)->default(0);
-            $table->float('salary_max', 10, 2)->default(0);
-            $table->float('salary_min', 10, 2)->default(0);
+            $table->float('salary_year', 10, 2)->default(0.00);
+            $table->float('salary_max', 10, 2)->default(0.00);
+            $table->float('salary_min', 10, 2)->default(0.00);
             $table->string('salary_currency', 20);
             $table->string('experience', 150)->nullable();
             $table->integer('study_id')->index()->nullable(); // ID from the studies database

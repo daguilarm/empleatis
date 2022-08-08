@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http;
+namespace App\Http\Controllers\Traits;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;

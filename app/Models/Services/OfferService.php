@@ -76,13 +76,13 @@ trait OfferService
                     });
             })
             ->when($workday, function ($query, $workday) {
-                $query->where(function($query) use ($workday) {
+                $query->where(function ($query) use ($workday) {
                     foreach ($workday as $value) {
-                        $query->orWhere('workday_type', 'LIKE', '%' . $value . '%');
+                        $query->orWhere('workday_type', 'LIKE', '%'.$value.'%');
                     }
                 });
             })
-            ->when($salary, function($query, $salary) {
+            ->when($salary, function ($query, $salary) {
                 return $this->betweenSalary($query, $salary);
             })
             ->when($search, function ($query, $search): void {
@@ -140,8 +140,8 @@ trait OfferService
 
     private function betweenSalary(Builder $query, ?int $salary)
     {
-        if($salary) {
-            return match($salary) {
+        if ($salary) {
+            return match ($salary) {
                 1 => $query->where('salary_year', '>=', '40000'),
                 2 => $query->whereBetween('salary_year', [35000, 40000]),
                 3 => $query->whereBetween('salary_year', [30000, 35000]),
@@ -149,9 +149,10 @@ trait OfferService
                 5 => $query->whereBetween('salary_year', [20000, 25000]),
                 6 => $query->whereBetween('salary_year', [10000, 20000]),
                 7 => $query->where('salary_year', '>', 0)->where('salary_year', '<', '10000'),
-                8 => $query->where(function($query) {
+                8 => $query->where(function ($query) {
                     $query->whereNull('salary_year')->orWhere('salary_year', '=', '');
-                }),
+                }
+                ),
                 default => $query,
             };
         }

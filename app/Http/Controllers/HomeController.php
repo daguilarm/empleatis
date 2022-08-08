@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Http\Configurable;
+use App\Http\Controllers\Traits\Configurable;
 use App\Models\Language;
 use App\Models\Offer;
 use Illuminate\View\View;
