@@ -1,4 +1,4 @@
-<section id="filter" class="w-full md:flex md:flex-col md:w-1/4">
+<section id="filter" class="w-full hidden md:flex md:flex-col md:w-1/4">
 
     {{-- Title --}}
     <h4 class="relative flex text-base font-bold bg-gradient-to-r from-indigo-800 to-indigo-400 text-white px-4 py-3">

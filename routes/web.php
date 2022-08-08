@@ -54,6 +54,14 @@ Route::middleware(['guest'])
         // Search Controller
         Route::get('/search', SearchController::class)
             ->name('search');
+
+        // Search Controller
+        Route::get('/sitemap/rss.xml', function () {
+            return response()
+                ->view('sitemap')
+                ->header('Content-Type', 'text/xml');
+        })
+            ->name('sitemap');
     });
 
 /*

@@ -2,12 +2,12 @@
     $request = request();
 @endphp
 
-<div id="search-response" class="flex w-full">
+<div id="search-response" class="p-2 md:p-0 flex w-full">
         {{-- Filters --}}
     <x-filters :config="$config" :categories="$results_categories" :provinces="$results_provinces"></x-filters>
 
     {{-- Results --}}
-    <section id="search-results" class="w-full m-0 md:ml-8">
+    <section id="search-results" class="w-full md:w-2/3 xl:w-full m-0 md:ml-8">
 
         {{-- Loading --}}
         <x-livewire.loading.results></x-livewire.loading.results>
@@ -26,10 +26,10 @@
             @foreach($results as $result)
 
                 {{-- Element --}}
-                <div class="flex mb-4 p-4">
+                <div class="xl:flex mb-4 p-4">
 
                     {{-- Left column --}}
-                    <div class="w-full md:w-3/4 pr-4">
+                    <div class="w-full xl:w-3/4 pr-4">
 
                         {{-- Title --}}
                         <x-search.sections.title :title="$result?->title" :id="$result->id" :difference="$result->diff_days"></x-search.sections.title>
@@ -47,7 +47,7 @@
                     </div>
 
                     {{-- Right column --}}
-                    <div class="w-full md:w-1/4 flex flex-col px-3 py-4 bg-blue-50">
+                    <div class="w-full xl:w-1/4 xl:flex xl:flex-col px-3 py-4 bg-blue-50">
 
                         {{-- Locations --}}
                         <x-search.sections.info :value="$result?->locations" icon="location-marker"></x-search.sections.info>
@@ -91,14 +91,14 @@
                 {{-- Pagination --}}
                 @if($config->get('section') !== 'home')
                     <section id="pagination" class="bg-white p-4 flex-none">
-                        {!! $results->appends([
-                                'search' => $request->get('search') ?? '',
-                                'locations' => $request->get('locations') ?? '',
-                                'ogp' => $request->get('ogp'),
-                                'ctp' => $request->get('ctp'),
-                                'tmp' => $request->get('tmp'),
-                                'mts' => $request->get('mts'),
-                            ])->links() !!}
+                        {!! $results->onEachSide(1)->appends([
+                            'search' => $request->get('search') ?? '',
+                            'locations' => $request->get('locations') ?? '',
+                            'ogp' => $request->get('ogp'),
+                            'ctp' => $request->get('ctp'),
+                            'tmp' => $request->get('tmp'),
+                            'mts' => $request->get('mts'),
+                        ])->links() !!}
                     </section>
                 @endif
             </div>

@@ -1,5 +1,32 @@
-{{-- Pagination --}}
-@if ($paginator->hasPages())
+{{-- Simple Pagination for mobile --}}
+@if($paginator->hasPages() && Agent::isMobile())
+    <nav role="navigation" aria-label="Pagination Navigation" class="flex justify-between">
+        {{-- Previous Page Link --}}
+        @if ($paginator->onFirstPage())
+            <span class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-default leading-5 rounded-md">
+                {!! __('pagination.previous') !!}
+            </span>
+        @else
+            <a href="{{ $paginator->previousPageUrl() }}" rel="prev" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+                {!! __('pagination.previous') !!}
+            </a>
+        @endif
+
+        {{-- Next Page Link --}}
+        @if ($paginator->hasMorePages())
+            <a href="{{ $paginator->nextPageUrl() }}" rel="next" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+                {!! __('pagination.next') !!}
+            </a>
+        @else
+            <span class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-default leading-5 rounded-md">
+                {!! __('pagination.next') !!}
+            </span>
+        @endif
+    </nav>
+@endif
+
+{{-- Regular Pagination --}}
+@if ($paginator->hasPages() && !Agent::isMobile())
 
     {{-- Navigation navbar --}}
     <nav role="navigation" aria-label="{{ __('Pagination Navigation') }}" class="mx-2 md:px-6 w-full">
@@ -62,17 +89,17 @@
         {{-- Pagination text --}}
         <div class="flex items-center justify-center mt-5">
             <p class="text-xs text-blue-800 leading-5">
-                {!! __('Showing') !!}
+                Mostrando de
                 @if ($paginator->firstItem())
                     <span class="font-bold">{{ $paginator->firstItem() }}</span>
-                    {!! __('to') !!}
+                    a
                     <span class="font-bold">{{ $paginator->lastItem() }}</span>
                 @else
                     {{ $paginator->count() }}
                 @endif
-                {!! __('of') !!}
+                de
                 <span class="font-bold">{{ $paginator->total() }}</span>
-                {!! __('results') !!}
+                resultados
             </p>
         </div>
 

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Traits\Analyticable;
 use App\Models\Offer;
 use Illuminate\Http\RedirectResponse;
 use Jenssegers\Agent\Agent;
-use App\Http\Controllers\Traits\Analyticable;
 
 class LinkController
 {

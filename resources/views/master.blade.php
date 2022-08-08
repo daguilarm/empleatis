@@ -31,7 +31,7 @@
                 {{-- Home --}}
                 @if($config->get('section') === 'home')
                     {{-- Added technology jobs --}}
-                    <div class="md:flex justify-center bg-white pt-8 pb-2">
+                    <div class="hidden md:flex bg-white md:py-4">
                         <x-home.technology :languages="$languages"></x-home.technology>
                         {{-- Added salary jobs --}}
                         <x-home.salary :salaries="$salaries"></x-home.salary>
