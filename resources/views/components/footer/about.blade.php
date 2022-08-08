@@ -10,5 +10,8 @@
         <li>
             <a href="{{ route('legal.cookies') }}" class="text-sm text-indigo-100 hover:text-white">Política de cookies</a>
         </li>
+        <li>
+            <a href="#" class="gdpr-cookie-notice-nav-item-settings text-sm text-indigo-100 hover:text-white">Configuración de cookies</a>
+        </li>
     </ul>
 </div>
