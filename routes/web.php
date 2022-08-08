@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LinkController;
 use App\Http\Controllers\LegalController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\CategoryController;
@@ -29,6 +30,10 @@ Route::middleware(['guest'])
         // Home Controller
         Route::get('/', HomeController::class)
             ->name('home');
+
+        // Link Controller
+        Route::get('/links/reference/{offer}', LinkController::class)
+        ->name('link');
 
         // Language Controller
         Route::get('/{section}/{categoryNameSlug}/{category}/lenguaje/{languageNameSlug}/{language}/{provinceNameSlug}/{province}', LanguageController::class)

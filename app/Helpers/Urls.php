@@ -34,7 +34,7 @@ if (! function_exists('rute_to_language')) {
 if (! function_exists('link_out')) {
     function link_out(string $uuid): string
     {
-        return url('/links/reference?id='.$uuid);
+        return url('/links/reference/'.$uuid);
     }
 }
 
