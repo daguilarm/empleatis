@@ -11,7 +11,6 @@ export default defineConfig({
         laravel([
             'resources/css/app.scss',
             'resources/js/app.js',
-            'resources/js/gdpr/gdpr.js',
         ]),
         {
             name: 'blade',
