@@ -47,7 +47,11 @@ class LinkController
         if($checkValue->count() <= 0) {
             // Link analytics
             Link::create([
-                'device_type' => $this->agent->isDesktop() ? 'Desktop' : 'Device',
+                'device_type' => match(true) {
+                    $this->agent->isMobile() => 'Mobile',
+                    $this->agent->isTablet() => 'Tablet',
+                    default => 'Desktop'
+                },
                 'device_name' => $this->agent->device() ?? 'Desktop',
                 'robot' => $this->agent->isRobot() ? $this->agent->robot() : null,
                 'platform' => $this->agent->platform(),

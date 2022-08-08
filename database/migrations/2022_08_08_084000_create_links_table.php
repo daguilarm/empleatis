@@ -19,7 +19,7 @@ return new class extends Migration
                 $table->uuid('offer_id');
                 $table->unsignedBigInteger('category_id');
                 $table->unsignedBigInteger('language_id');
-                $table->string('device_type'); // Is a mobile or desktop => [Desktop -> 0, device -> 1]
+                $table->string('device_type'); // Desktop, table or mobile
                 $table->string('device_name', 120);// Get the device name.
                 $table->string('robot', 120)->nullable(); // If robot, robot name
                 $table->string('platform', 120);// Get the operating system.
