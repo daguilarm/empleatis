@@ -63,7 +63,7 @@ trait Analyticable
     /**
      * Get the device type
      */
-    private function isRobot(): string
+    private function isRobot(): string|null
     {
         return $this->agent->isRobot()
             ? $this->agent->robot()
