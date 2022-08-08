@@ -11,6 +11,7 @@
         "genealabs/laravel-model-caching": "^0.12.4",
         "goldspecdigital/laravel-eloquent-uuid": "^9.0",
         "guzzlehttp/guzzle": "^7.2",
+        "jenssegers/agent": "^2.6",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/telescope": "^4.9",

@@ -16,6 +16,15 @@ return new class extends Migration
         Schema::connection('analytics')
             ->create('links', function (Blueprint $table) {
                 $table->id();
+                $table->uuid('offer_id');
+                $table->unsignedBigInteger('category_id');
+                $table->unsignedBigInteger('language_id');
+                $table->string('device_type'); // Is a mobile or desktop => [Desktop -> 0, device -> 1]
+                $table->string('device_name', 120);// Get the device name.
+                $table->string('robot', 120)->nullable(); // If robot, robot name
+                $table->string('platform', 120);// Get the operating system.
+                $table->string('browser', 120);// Get the operating system.
+                $table->string('referer', 32);// Get referer ID.
                 $table->timestamps();
             });
     }
