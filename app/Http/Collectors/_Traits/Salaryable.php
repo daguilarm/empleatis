@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Collectors\_Traits;
 
+use InvalidArgumentException;
+
 trait Salaryable
 {
     private array $salary_char_filter = [
@@ -45,7 +47,7 @@ trait Salaryable
     /**
      * Custom way to calculate salary by year
      *
-     * @param  string|object  $values
+     * @param  string|object  $salary
      */
     private function calculateSalary($salary): array
     {
@@ -98,6 +100,7 @@ trait Salaryable
             'month' => 12,
             'week' => 52,
             'day' => 365,
+            default => throw new InvalidArgumentException('Not allowed value.'),
         };
 
         // Calculate the values

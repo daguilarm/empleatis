@@ -12,7 +12,7 @@ class Category extends Model
 {
     use HasFactory;
     use CategoryService;
-    //use Cachable;
+    use Cachable;
 
     /**
      * The table name

@@ -181,7 +181,7 @@ class Ranking
     /**
      * Calculate keyword density
      */
-    private function keywordDensity(string $string = ''): float
+    private function keywordDensity(string $string = '', int $total = 0): float
     {
         $loop = 0;
         $keywords = explode(',', $this->category_r);
@@ -257,7 +257,11 @@ class Ranking
     private function salaryAVG(): float
     {
         if (! $this->salary_year_r || ! is_numeric($this->salary_year_r)) {
-            return -2.5;
+            $this->salary_year_r = 0.0;
+        }
+
+        if ($this->salary_year_r <= 0 && $this->salary_max_r && $this->salary_min_r) {
+            $this->salary_year_r = ($this->salary_max_r + $this->salary_min_r) / 2;
         }
 
         // Bonus
@@ -280,7 +284,8 @@ class Ranking
             $this->salary_year_r > 14000.00 => 3.00,
             $this->salary_year_r > 13000.00 => 2.00,
             $this->salary_year_r > 12000.00 => 1.00,
-            default => 0,
+            $this->salary_year_r > 10000.00 => 0.00,
+            default => -15,
         };
     }
 }

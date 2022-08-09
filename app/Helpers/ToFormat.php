@@ -30,7 +30,7 @@ if (! function_exists('to_title')) {
  * Convert a string to title
  */
 if (! function_exists('from_search')) {
-    function from_search(): ?string
+    function from_search(): string
     {
         // Get the values
         $request = request();

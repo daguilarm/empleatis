@@ -17,6 +17,8 @@ class Buttons extends Component
 
     public $cookie;
 
+    public $showComponent;
+
     protected $listeners = ['updated'];
 
     public function mount($uuid): void
@@ -39,31 +41,11 @@ class Buttons extends Component
      */
     public function storeCookie(string $uuid): void
     {
-        // Get the cookie
-        $cookie = $this->getCookie();
-
-        // Add the current value
-        // Only if exists and not stored yet
+        // Store the cookie only if exists.
+        // And not stored yet.
         if ($uuid && ! $this->checkCookie()) {
-            array_push($cookie, $uuid);
-
-            // Store the cookie
-            Cookie::queue(
-                Cookie::make(
-                    config('cookie.offers'),
-                    json_encode($cookie),
-                    $this->lifetime
-                )
-            );
-
-            // Call to the Saved component
-            $this->emitTo('saved', 'cookieAdded', true);
-
-            // A little delay
-            sleep(1);
-
-            // Update the cookie value for the view
-            $this->cookie = $uuid;
+            // Store the cookie if not on the list
+            $this->storeCookieIfNotOnTheList($uuid);
         }
     }
 
@@ -73,6 +55,37 @@ class Buttons extends Component
     public function updated(): void
     {
         $this->cookie = $this->currentCookie();
+    }
+
+    /**
+     * Store the cookie if not on the list.
+     */
+    private function storeCookieIfNotOnTheList(string $uuid): void
+    {
+        // Get the cookie
+        $cookie = $this->getCookie();
+
+        // Add the cookie to the array
+        array_push($cookie, $uuid);
+
+        // Create a new cookie with the new values
+        Cookie::queue(
+            Cookie::make(
+                config('cookie.offers'),
+                json_encode($cookie),
+                $this->lifetime
+            )
+        );
+
+        // Call to the Saved component
+        // It is time to update...
+        $this->emitTo('saved', 'cookieAdded', true);
+
+        // A little delay
+        sleep(1);
+
+        // Update the cookie value for the view
+        $this->cookie = $uuid;
     }
 
     /**

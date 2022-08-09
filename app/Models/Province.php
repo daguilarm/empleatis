@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Province extends Model
 {
-    //use Cachable;
+    use Cachable;
     use HasFactory;
     use ProvinceService;
 

@@ -14,6 +14,9 @@ class Collector extends AbstractCollectors
      */
     public function execute(object $categories): void
     {
+        $total = $totalLanguages = 0;
+        $languageCategory = collect([]);
+
         //List all the categories
         foreach ($categories as $index => $category) {
             // Skip category: programador

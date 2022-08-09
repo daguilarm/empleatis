@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Language extends Model
 {
-    //use Cachable;
+    use Cachable;
     use HasFactory;
     use LanguageService;
 

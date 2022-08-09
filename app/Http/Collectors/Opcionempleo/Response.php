@@ -55,9 +55,6 @@ class Response extends AbstractResponse
 
     /**
      * Get the request headers
-     *
-     * @param  string  $page
-     * @return array
      */
     public function apiHeaders(array $headers = []): array
     {

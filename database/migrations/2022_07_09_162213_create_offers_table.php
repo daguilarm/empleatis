@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('offers', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('code', 255); // The offer code from the partner
-            $table->fullText('title');
-            $table->fullText('description');
+            $table->text('title')->fullText();
+            $table->text('description')->fullText();
             $table->text('requirements')->nullable();
             $table->text('url');
             $table->date('date')->nullable();

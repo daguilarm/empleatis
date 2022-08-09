@@ -18,6 +18,7 @@ class CategoryController
     {
         $config = $this->configuration($section, $categoryNameSlug, $category, $provinceNameSlug, $province);
 
-        return view('master')->withConfig($config);
+        return view('master')
+            ->with('config', $config);
     }
 }

@@ -22,12 +22,8 @@ trait Helpeable
     private function isNumeric(object|null $object, string $value): float
     {
         // Exists value
-        $numeric = isset($object->$value)
+        return isset($object->$value)
             ? (float) $object->$value
-            : 0.00;
-
-        return is_numeric($numeric)
-            ? (float) $numeric
             : 0.00;
     }
 }

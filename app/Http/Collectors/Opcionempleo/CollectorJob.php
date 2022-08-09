@@ -43,7 +43,6 @@ class CollectorJob extends AbstractCollectorJob implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  object  $response
      * @return void
      */
     public function __construct(object $category, int $page, ?object $language)
@@ -51,14 +50,13 @@ class CollectorJob extends AbstractCollectorJob implements ShouldQueue
         $this->category_name = $category->search_name;
         $this->category_id = (int) $category->id;
         $this->page = $page;
-        $this->language_name = $language->name ?? null;
-        $this->language_id = (int) $language?->id ?? null;
+        $this->language_name = optional($language)->name;
+        $this->language_id = optional($language)->id;
     }
 
     /**
      * Execute the job.
      *
-     * @param  Collector  $collector
      * @return void|null
      */
     public function handle()
@@ -127,8 +125,8 @@ class CollectorJob extends AbstractCollectorJob implements ShouldQueue
             'code' => md5($values->url),
             'company' => $values->company,
             'source' => 'opcionempleo.com',
-            'date' => self::formatDate($values?->date),
-            'salary' => self::formatSalary($values?->salary),
+            'date' => self::formatDate($values->date),
+            'salary' => self::formatSalary($values->salary),
             'salary_max' => $salary_max,
             'salary_min' => $salary_min,
             'salary_year' => $salary_year,

@@ -11,7 +11,8 @@ class LegalController
     public function advice()
     {
         return view('legal.advice')
-            ->withConfig(
+            ->with(
+                'config',
                 $this->configuration('legal.advice')
             );
     }
@@ -19,7 +20,8 @@ class LegalController
     public function cookies()
     {
         return view('legal.cookies')
-            ->withConfig(
+            ->with(
+                'config',
                 $this->configuration('legal.cookies')
             );
     }
@@ -27,7 +29,8 @@ class LegalController
     public function privacity()
     {
         return view('legal.privacity')
-            ->withConfig(
+            ->with(
+                'config',
                 $this->configuration('legal.privacity')
             );
     }

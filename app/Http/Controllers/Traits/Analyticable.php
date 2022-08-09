@@ -57,7 +57,7 @@ trait Analyticable
      */
     private function deviceName(): string
     {
-        return $this->agent->device() ?? 'Desktop';
+        return $this->agent->device();
     }
 
     /**
@@ -73,7 +73,7 @@ trait Analyticable
     /**
      * Get the device type
      */
-    private function salary(Offer $offer): string
+    private function salary(Offer $offer): ?float
     {
         return $offer->salary_year > 0
             ? $offer->salary_year

@@ -18,8 +18,6 @@ abstract class AbstractResponse
 
     /**
      * Generate the headers for the API
-     *
-     * @return resource
      */
-    abstract protected function apiHeaders();
+    abstract protected function apiHeaders(): array;
 }

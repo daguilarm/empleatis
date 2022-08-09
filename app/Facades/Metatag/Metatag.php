@@ -43,7 +43,7 @@ class Metatag
         }
 
         // Default
-        return sprintf('Buscador de empleo, formación y cursos online.', config('empleatis.name'));
+        return sprintf('Buscador de empleo, formación y cursos online. %s', config('empleatis.name'));
     }
 
     /**
@@ -56,8 +56,7 @@ class Metatag
         // Sections
         if ($this->section === 'categorias') {
             return sprintf(
-                'Ofertas de empleo y formación de %s%s. '.
-                'Accede a nuestra bolsa de trabajo de %s, donde podrás encontrar el trabajo que estás buscando.',
+                'Ofertas de empleo y formación de %s%s. Accede a nuestra bolsa de trabajo de %s, donde podrás encontrar el trabajo que estás buscando.',
                 $this->category,
                 $this->province,
                 $this->category,
@@ -66,8 +65,7 @@ class Metatag
 
         if ($this->section === 'lenguajes') {
             return sprintf(
-                '¿Quieres pogramar en %s? '.
-                'Accede a nuestras ofertas de trabajo de %s%s, donde podrás encontrar el trabajo que estás buscando programando en %s. ',
+                '¿Quieres pogramar en %s? Accede a nuestras ofertas de trabajo de %s%s, donde podrás encontrar el trabajo que estás buscando programando en %s. ',
                 $this->language,
                 $this->category,
                 $this->province,

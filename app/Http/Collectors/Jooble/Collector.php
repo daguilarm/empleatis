@@ -16,8 +16,10 @@ class Collector extends AbstractCollectors
      */
     public function execute(object $categories): void
     {
+        $languageCategory = collect([]);
+
         //List all the categories
-        foreach ($categories as $index => $category) {
+        foreach ($categories as $category) {
             // Skip category: programador
             if ($category->id === 18) {
                 // Programming category
@@ -29,7 +31,7 @@ class Collector extends AbstractCollectors
         }
 
         // Generate the jobs for programming languages
-        foreach (Language::all() as $indexLanguage => $language) {
+        foreach (Language::all() as $language) {
             // Proccess all the jobs
             $this->executeJob($languageCategory, $this->totalPages, $language);
         }

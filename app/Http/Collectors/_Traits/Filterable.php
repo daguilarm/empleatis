@@ -43,12 +43,13 @@ trait Filterable
      */
     private function filterElement(string $category, object $values, ?string $language = null): bool
     {
+        // Values
         $score = 10;
         $needel = $language ? sprintf('%s, %s', $category, $language) : $category;
-        $descriptionCount = $this->filterContainsTotal($needel, $values?->description ?? $values?->snippet);
+        $descriptionCount = $this->filterContainsTotal($needel, $values->description ?? $values->snippet);
 
         // Javascript error
-        if ($this->filterContains('disabled JavaScript in your web browser', $values?->description ?? $values?->snippet) === true) {
+        if ($this->filterContains('disabled JavaScript in your web browser', $values->description ?? $values->snippet) === true) {
             $score = 0;
         }
 

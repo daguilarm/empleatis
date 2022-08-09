@@ -22,6 +22,11 @@ trait Connectable
     protected bool $connection_as_google = false;
 
     /**
+     * Set connection
+     */
+    protected object $connection;
+
+    /**
      * Init the connection with the server
      */
     public function connection(): self
@@ -76,6 +81,7 @@ trait Connectable
     public function headers(): self
     {
         // Generate headers
+        $headers = [];
         $headers[] = $this->connection_response_type;
         $headers[] = 'Cache-Control: max-age=0,no-store,no-cache';
 

@@ -33,12 +33,12 @@ trait OfferService
     /**
      * Search jobs
      */
-    public function scopeSearchOffers(Builder $query, array $idFields = [null, null, null], array $searchFields = [null, null], array $optionFields = [null, null, null, null, null], bool $is_search = false): Builder
+    public function scopeSearchOffers(Builder $query, array $idFields = [], array $searchFields = [], array $optionFields = [], bool $is_search = false): Builder
     {
         // Get the values
-        [$category, $province, $language] = $idFields;
-        [$search, $locations] = $searchFields;
-        [$workday, $salary] = $optionFields;
+        [$category, $province, $language] = $this->arrayConstructorOrReset($idFields, 3);
+        [$search, $locations] = $this->arrayConstructorOrReset($searchFields, 2);
+        [$workday, $salary] = $this->arrayConstructorOrReset($optionFields, 2);
 
         // Empty results
         if ($is_search && is_null($search) && is_null($locations)) {
@@ -120,8 +120,8 @@ trait OfferService
      */
     protected function locations(): Attribute
     {
-        $region = $this->regions?->name ? sprintf(' (%s)', $this->regions?->name) : '';
-        $province = $this->provinces?->name;
+        $region = optional($this->regions)->name ? sprintf(' (%s)', optional($this->regions)->name) : '';
+        $province = optional($this->provinces)->name;
 
         return Attribute::make(
             get: fn ($value) => sprintf('%s%s', $province, $region),
@@ -156,5 +156,18 @@ trait OfferService
                 default => $query,
             };
         }
+    }
+
+    private function arrayConstructorOrReset(array $value, int $items)
+    {
+        if (count($value) <= 0) {
+            for ($x = 0; $x < $items; $x++) {
+                array_push($value, null);
+            }
+
+            return $value;
+        }
+
+        return $value;
     }
 }

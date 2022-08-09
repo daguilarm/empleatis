@@ -41,6 +41,11 @@ trait Optionable
             ->values()
             ->implode(',');
 
-        return $results ?? $this->workingDayDefault;
+        // Trim results
+        $results = trim($results);
+
+        return strlen($results) <= 0
+            ? $this->workingDayDefault
+            : $results;
     }
 }

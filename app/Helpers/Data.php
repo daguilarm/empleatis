@@ -18,7 +18,7 @@ if (! function_exists('get_data')) {
  * Default value
  */
 if (! function_exists('default_data')) {
-    function default_data(): ?string
+    function default_data(): string
     {
         return '&#8208;';
     }

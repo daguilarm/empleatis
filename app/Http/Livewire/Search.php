@@ -75,7 +75,7 @@ class Search extends Component
             $this->optionFields,
             $is_search
         )
-        ->get();
+            ->get();
     }
 
     /**
@@ -84,7 +84,7 @@ class Search extends Component
     private function pagination(Collection $data): LengthAwarePaginator
     {
         $perPage = $this->config->get('perPage');
-        $page = request('page') ?: (Paginator::resolveCurrentPage() ?: 1);
+        $page = request('page') ?? Paginator::resolveCurrentPage();
 
         return new LengthAwarePaginator(
             $data->forPage($page, $perPage),

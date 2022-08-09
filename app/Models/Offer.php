@@ -12,7 +12,7 @@ class Offer extends Model
 {
     use HasFactory;
     use OfferService;
-    // use Cachable;
+    use Cachable;
 
     /**
      * The table name

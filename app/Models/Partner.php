@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Partner extends Model
 {
-    //use Cachable;
+    use Cachable;
     use HasFactory;
 
     /**

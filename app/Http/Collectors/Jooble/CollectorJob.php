@@ -43,7 +43,6 @@ class CollectorJob extends AbstractCollectorJob implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  object  $response
      * @return void
      */
     public function __construct(object $category, int $page, ?object $language)
@@ -51,8 +50,8 @@ class CollectorJob extends AbstractCollectorJob implements ShouldQueue
         $this->category_name = $category->search_name;
         $this->category_id = (int) $category->id;
         $this->page = $page;
-        $this->language_name = $language->name ?? null;
-        $this->language_id = (int) $language?->id ?? null;
+        $this->language_name = optional($language)->name;
+        $this->language_id = optional($language)->id;
     }
 
     /**
@@ -107,10 +106,10 @@ class CollectorJob extends AbstractCollectorJob implements ShouldQueue
         $locations = self::searchProvince($filteredLocations);
 
         // Calculate salaries
-        [$salary_max, $salary_min, $salary_year] = self::calculateSalary($values?->salary);
+        [$salary_max, $salary_min, $salary_year] = self::calculateSalary($values->salary);
 
         // Workday
-        $workday = self::calculateWorkingDay($values?->type);
+        $workday = self::calculateWorkingDay($values->type);
 
         // Calculate the ranking
         $ranking = app(Ranking::class)
@@ -129,9 +128,9 @@ class CollectorJob extends AbstractCollectorJob implements ShouldQueue
             'url' => $values->link,
             'code' => md5($values->link),
             'company' => $values?->company ?? null,
-            'source' => $this->scoreSource($values?->source),
-            'date' => self::formatDate($values?->updated),
-            'salary' => self::formatSalary($values?->salary),
+            'source' => $this->scoreSource($values->source),
+            'date' => self::formatDate($values->updated),
+            'salary' => self::formatSalary($values->salary),
             'salary_max' => $salary_max,
             'salary_min' => $salary_min,
             'salary_currency' => '€',

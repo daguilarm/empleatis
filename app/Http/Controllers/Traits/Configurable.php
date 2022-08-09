@@ -74,7 +74,7 @@ trait Configurable
     public function configuration(string $section, ?string $categoryNameSlug = null, ?int $category = null, ?string $provinceNameSlug = null, ?int $province = null, ?string $languageNameSlug = null, ?int $language = null): Collection
     {
         return collect([
-            'section' => $section ?? $this->section,
+            'section' => $section,
             'province' => $this->capture($province),
             'provinceName' => $this->captureName($this->provinceName, $this->provinceNameSlug, $provinceNameSlug),
             'provinceNameSlug' => $this->captureNameSlug($provinceNameSlug, $this->provinceNameSlug),

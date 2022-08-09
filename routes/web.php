@@ -33,7 +33,7 @@ Route::middleware(['guest'])
 
         // Link Controller
         Route::get('/links/reference/{offer}', LinkController::class)
-        ->name('link');
+            ->name('link');
 
         // Language Controller
         Route::get('/{section}/{categoryNameSlug}/{category}/lenguaje/{languageNameSlug}/{language}/{provinceNameSlug}/{province}', LanguageController::class)

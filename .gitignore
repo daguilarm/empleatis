@@ -23,7 +23,9 @@ Homestead.json
 .phpunit.result.cache
 
 # Custom
-/.idea
+phpstan.neon
+.idea
 /.vscode
 _ide_helper.php
 _ide_helper_models.php
+

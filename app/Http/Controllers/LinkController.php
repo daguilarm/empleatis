@@ -23,13 +23,14 @@ class LinkController
     public function __invoke(Offer $offer): RedirectResponse
     {
         // Offer not found
-        if (! $offer?->id) {
+        if (! $offer->id) {
             abort(404);
         }
 
         // Update analytics
         self::analytics($offer);
 
-        return redirect()->to($offer->url);
+        return redirect()
+            ->to($offer->url);
     }
 }

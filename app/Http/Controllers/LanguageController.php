@@ -18,6 +18,7 @@ class LanguageController
     {
         $config = $this->configuration('lenguajes', $categoryNameSlug, $category, $provinceNameSlug, $province, $languageNameSlug, $language);
 
-        return view('master')->withConfig($config);
+        return view('master')
+            ->with('config', $config);
     }
 }

@@ -33,8 +33,7 @@ class SearchController
      */
     private function validateRequest(array $data)
     {
-        return
-            isset($data['ctp']) &&
+        return isset($data['ctp']) &&
             isset($data['mts']) &&
             isset($data['ogp']) &&
             isset($data['tmp']) &&

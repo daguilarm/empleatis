@@ -36,7 +36,8 @@ class Saved extends Component
     public function render(): View
     {
         return view('components.livewire.saved')
-            ->withOffers(
+            ->with(
+                'offers',
                 $this->fromDatabase()
             );
     }
@@ -60,16 +61,16 @@ class Saved extends Component
             ->toArray();
 
         // Delete cookie
-        if (Cookie::forget(config('cookie.offers'))) {
-            // Store the cookie
-            Cookie::queue(
-                Cookie::make(
-                    config('cookie.offers'),
-                    json_encode($cookie),
-                    $this->lifetime
-                )
-            );
-        }
+        Cookie::forget(config('cookie.offers'));
+
+        // Store the cookie
+        Cookie::queue(
+            Cookie::make(
+                config('cookie.offers'),
+                json_encode($cookie),
+                $this->lifetime
+            )
+        );
 
         // Call to the Saved component
         $this->emitTo('buttons', 'updated');
