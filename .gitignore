@@ -29,3 +29,9 @@ phpstan.neon
 _ide_helper.php
 _ide_helper_models.php
 
+# Cache
+storage/debugbar
+storage/framework/sessions
+storage/framework/testing
+storage/framework/views
+storage/logs
