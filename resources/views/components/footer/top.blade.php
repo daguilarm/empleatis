@@ -2,19 +2,19 @@
     <h3 class="text-sm font-semibold text-indigo-300 tracking-wider uppercase">Empleos mejor pagados</h3>
     <ul role="list" class="mt-4 space-y-4">
         <li>
-            <a href="https://empleo.test/categorias/programador/18/lenguajes-programacion/java/3" class="text-sm text-indigo-100 hover:text-white">Programador Java</a>
+            <a href="{{ url('categorias/programador/18/lenguaje/java/3') }}" class="{{ $link }}">Programador Java</a>
         </li>
         <li>
-            <a href="https://empleo.test/categorias/big-data/33" class="text-sm text-indigo-100 hover:text-white">Big Data / IA</a>
+            <a href="{{ url('categorias/big-data/33') }}" class="{{ $link }}">Big Data / IA</a>
         </li>
         <li>
-            <a href="https://empleo.test/categorias/medico/52" class="text-sm text-indigo-100 hover:text-white">Médico especialista</a>
+            <a href="{{ url('categorias/medico/52') }}" class="{{ $link }}">Médico especialista</a>
         </li>
         <li>
-            <a href="https://empleo.test/categorias/marketing-digital/28" class="text-sm text-indigo-100 hover:text-white">Marketing Digital</a>
+            <a href="{{ url('categorias/marketing-digital/28') }}" class="{{ $link }}">Marketing Digital</a>
         </li>
         <li>
-            <a href="https://empleo.test/categorias/analista-de-datos/22" class="text-sm text-indigo-100 hover:text-white">Data Scientist</a>
+            <a href="{{ url('categorias/analista-de-datos/22') }}" class="{{ $link }}">Data Scientist</a>
         </li>
     </ul>
 </div>
