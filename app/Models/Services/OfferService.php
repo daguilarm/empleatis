@@ -118,11 +118,9 @@ trait OfferService
     public function scopeFulltext(Builder $query, ?string $text, bool $ignoreSearchFields)
     {
         if (! is_null($text) && $ignoreSearchFields === false) {
-            $query->when($text, function ($query, $text): void {
-                $query
-                    ->whereFullText('title', $text)
-                    ->orWhereFullText('description', $text);
-            });
+            $query
+                ->whereFullText('title', $text)
+                ->orWhereFullText('description', $text);
         }
     }
 

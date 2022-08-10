@@ -73,9 +73,11 @@ class Search extends Component
      */
     private function pagination(Collection $data): LengthAwarePaginator
     {
+        // Get values
         $perPage = $this->config->get('perPage');
         $page = request('page') ?? Paginator::resolveCurrentPage();
 
+        // Custom pagination
         return new LengthAwarePaginator(
             $data->forPage($page, $perPage),
             $data->count(),
@@ -94,17 +96,22 @@ class Search extends Component
      */
     private function relationship(Collection $offers): array
     {
+        // If not in home
         if ($this->config->get('section') !== 'home') {
+            // Make a second query with all the results
             $data = Offer::query()
                 ->searchOffers([], [], true)
                 ->get();
 
+            // Get the relationships
             return [
                 $data->pluck('categories')->unique(),
                 $data->pluck('provinces')->unique(),
             ];
         }
 
+        // If home
+        // Use the current search to get the relationship values
         return [
             $offers->pluck('categories')->unique(),
             $offers->pluck('provinces')->unique(),
