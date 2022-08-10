@@ -58,22 +58,12 @@ class Search extends Component
      */
     private function results(): Collection
     {
-        // Get the section
-        $section = $this->config->get('section');
-
-        // Search or home
-        $is_search = $section === 'search'
-            ? true
-            : false;
-
         // Delay a 0.3s
         usleep(300000);
 
         return Offer::searchOffers(
             $this->idFields(),
-            $this->searchFields(),
-            $this->optionFields,
-            $is_search
+            $this->optionFields
         )
             ->get();
     }
@@ -106,7 +96,7 @@ class Search extends Component
     {
         if ($this->config->get('section') !== 'home') {
             $data = Offer::query()
-                ->searchOffers()
+                ->searchOffers([], [], true)
                 ->get();
 
             return [

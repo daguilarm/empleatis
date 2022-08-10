@@ -33,16 +33,17 @@ trait OfferService
     /**
      * Search jobs
      */
-    public function scopeSearchOffers(Builder $query, array $idFields = [], array $searchFields = [], array $optionFields = [], bool $is_search = false): Builder
+    public function scopeSearchOffers(Builder $query, array $idFields = [], array $optionFields = [], bool $ignoreSearchFields = false): Builder
     {
         // Get the values
         [$category, $province, $language] = $this->arrayConstructorOrReset($idFields, 3);
-        [$search, $locations] = $this->arrayConstructorOrReset($searchFields, 2);
         [$workday, $salary] = $this->arrayConstructorOrReset($optionFields, 2);
+        $search = request('search');
+        $locations = request('locations');
 
         // Empty results
-        if ($is_search && is_null($search) && is_null($locations)) {
-            return $query->where('id', '0000011111');
+        if (request('ogp') && $ignoreSearchFields === false && is_null($search) && is_null($locations)) {
+            return $query->noResults();
         }
 
         // Sql query
@@ -55,51 +56,116 @@ trait OfferService
                 'provinces:id,name',
                 'categories:id,name,type',
             ])
-            ->when($category, function ($query, $category): void {
-                $query->whereCategoryId($category);
-            })
-            ->when($language, function ($query, $language): void {
-                $query->whereLanguageId($language);
-            })
-            ->when($province, function ($query, $province): void {
-                $query->whereProvinceId($province);
-            })
-            ->when($locations, function ($query, $locations) {
-
-                // Search province
-                $filteredLocations = self::filterLocations($locations);
-                $province = Province::searchByName($filteredLocations)->id;
-
-                $query
-                    ->when($province, function ($query, $province) {
-                        $query->where('province_id', $province);
-                    });
-            })
-            ->when($workday, function ($query, $workday) {
-                $query->where(function ($query) use ($workday) {
-                    foreach ($workday as $value) {
-                        $query->orWhere('workday_type', 'LIKE', '%'.$value.'%');
-                    }
-                });
-            })
-            ->when($salary, function ($query, $salary) {
-                return $this->betweenSalary($query, $salary);
-            })
-            ->when($search, function ($query, $search): void {
-                $query
-                    ->whereFullText('title', $search)
-                    ->orWhereFullText('description', $search);
-            })
-            ->when($search, function ($query, $search) {
-                $query
-                    ->whereFullText('title', $search)
-                    ->orWhereFullText('description', $search);
-            })
+            ->byId($category, $province, $language)
+            ->province($locations)
+            ->fulltext($search, $ignoreSearchFields)
+            ->fulltext($locations, $ignoreSearchFields)
+            ->workday($workday)
+            ->betweenSalary($salary)
             ->orderBy('jrank', 'desc')
             ->orderBy('salary_year', 'desc');
     }
 
-    public function scopeTopSalary($query)
+    /**
+     * Search jobs scope
+     * No results
+     */
+    public function scopeNoResults(Builder $query)
+    {
+        $query->where('id', '0000011111');
+    }
+
+    /**
+     * Search jobs scope
+     * ById
+     */
+    public function scopeById(Builder $query, ?int $category, ?int $province, ?int $language)
+    {
+        $query
+            ->when($category, function ($query, $category): void {
+                $query->whereCategoryId($category);
+            })
+            ->when($province, function ($query, $province): void {
+                $query->whereProvinceId($province);
+            })
+            ->when($language, function ($query, $language): void {
+                $query->whereLanguageId($language);
+            });
+    }
+
+    /**
+     * Search jobs scope
+     * Province
+     */
+    public function scopeProvince(Builder $query, ?string $locations, ?object $province = null)
+    {
+        // Search province
+        if ($locations) {
+            $filteredLocations = self::filterLocations($locations);
+            $province = Province::searchByName($filteredLocations);
+        }
+
+        $query
+            ->when($province, function ($query, $province) {
+                $query->where('province_id', $province->id);
+            });
+    }
+
+    /**
+     * Search jobs scope
+     * Full text in title and description
+     */
+    public function scopeFulltext(Builder $query, ?string $text, bool $ignoreSearchFields)
+    {
+        if (! is_null($text) && $ignoreSearchFields === false) {
+            $query->when($text, function ($query, $text): void {
+                $query
+                    ->whereFullText('title', $text)
+                    ->orWhereFullText('description', $text);
+            });
+        }
+    }
+
+    /**
+     * Search jobs scope
+     * Between salary
+     */
+    public function scopeWorkday(Builder $query, ?array $workday)
+    {
+        $query->when($workday, function ($query, $workday) {
+            $query->where(function ($query) use ($workday) {
+                foreach ($workday as $value) {
+                    $query->orWhere('workday_type', 'LIKE', '%'.$value.'%');
+                }
+            });
+        });
+    }
+
+    /**
+     * Search jobs scope
+     * Between salary
+     */
+    public function scopeBetweenSalary(Builder $query, ?int $salary)
+    {
+        $query->when($salary, function ($query, $salary) {
+            match ($salary) {
+                1 => $query->where('salary_year', '>', 40000),
+                2 => $query->whereBetween('salary_year', [35000, 40000]),
+                3 => $query->whereBetween('salary_year', [30000, 35000]),
+                4 => $query->whereBetween('salary_year', [25000, 30000]),
+                5 => $query->whereBetween('salary_year', [20000, 25000]),
+                6 => $query->whereBetween('salary_year', [10000, 20000]),
+                7 => $query->where('salary_year', '>', 0)->where('salary_year', '<', '10000'),
+                8 => $query->where(function ($query) {
+                    $query->whereNull('salary_year')->orWhere('salary_year', '=', '');
+                }
+                ),
+                default => $query,
+            };
+        });
+    }
+
+    public function scopeTopSalary(Builder $query)
     {
         return $query
             ->select('company', 'category_id', 'salary_year')
@@ -136,26 +202,6 @@ trait OfferService
         return Attribute::make(
             get: fn ($value) => $this->updated_at->diffInDays($this->date),
         );
-    }
-
-    private function betweenSalary(Builder $query, ?int $salary)
-    {
-        if ($salary) {
-            return match ($salary) {
-                1 => $query->where('salary_year', '>=', '40000'),
-                2 => $query->whereBetween('salary_year', [35000, 40000]),
-                3 => $query->whereBetween('salary_year', [30000, 35000]),
-                4 => $query->whereBetween('salary_year', [25000, 30000]),
-                5 => $query->whereBetween('salary_year', [20000, 25000]),
-                6 => $query->whereBetween('salary_year', [10000, 20000]),
-                7 => $query->where('salary_year', '>', 0)->where('salary_year', '<', '10000'),
-                8 => $query->where(function ($query) {
-                    $query->whereNull('salary_year')->orWhere('salary_year', '=', '');
-                }
-                ),
-                default => $query,
-            };
-        }
     }
 
     private function arrayConstructorOrReset(array $value, int $items)
