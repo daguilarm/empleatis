@@ -23,6 +23,10 @@
                 }
             });
         </script>
+
+        {{-- Custom image preload for home --}}
+        @includeWhen($config->get('section') === 'home', 'components.home.preload-img')
+
     </head>
     <body>
         {{-- Saved offers by the user --}}

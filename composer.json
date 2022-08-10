@@ -17,7 +17,8 @@
         "laravel/telescope": "^4.9",
         "laravel/tinker": "^2.7",
         "laraveles/spanish": "^1.5",
-        "livewire/livewire": "^2.10"
+        "livewire/livewire": "^2.10",
+        "renatomarinho/laravel-page-speed": "^2.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",

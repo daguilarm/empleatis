@@ -94,12 +94,30 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Offer byId(?int $category, ?int $province, ?int $language)
  * @method static \Illuminate\Database\Eloquent\Builder|Offer noResults()
+ * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer all($columns = [])
+ * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer avg($column)
+ * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer cache(array $tags = [])
+ * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer cachedValue(array $arguments, string $cacheKey)
+ * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer count($columns = '*')
+ * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer disableCache()
+ * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer disableModelCaching()
+ * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer exists()
+ * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer flushCache(array $tags = [])
+ * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer getModelCacheCooldown(\Illuminate\Database\Eloquent\Model $instance)
+ * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer inRandomOrder($seed = '')
+ * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer insert(array $values)
+ * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer isCachable()
+ * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer max($column)
+ * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer min($column)
+ * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer sum($column)
+ * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer truncate()
+ * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer withCacheCooldownSeconds(?int $seconds = null)
  */
 class Offer extends Model
 {
     use HasFactory;
     use OfferService;
-    // use Cachable;
+    use Cachable;
 
     /**
      * The table name

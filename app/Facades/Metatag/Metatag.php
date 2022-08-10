@@ -35,15 +35,27 @@ class Metatag
     {
         // Sections
         if ($this->section === 'categorias') {
-            return $this->generateText('Bolsa de empleo para %s%s. %s');
+            return $this->generateText('Bolsa de empleo para %s%s.');
         }
 
         if ($this->section === 'lenguajes') {
-            return $this->generateText('Bolsa de empleo para %s%s especializado en %s. %s');
+            return $this->generateText('Bolsa de empleo para %s%s especializado en %s.');
+        }
+
+        if ($this->section === 'legal.advice') {
+            return $this->generateText('Buscador de empleo, formación y cursos online. Aviso legal.');
+        }
+
+        if ($this->section === 'legal.cookies') {
+            return $this->generateText('Buscador de empleo, formación y cursos online. Cookies.');
+        }
+
+        if ($this->section === 'legal.privacity') {
+            return $this->generateText('Buscador de empleo, formación y cursos online. Privacidad.');
         }
 
         // Default
-        return sprintf('Buscador de empleo, formación y cursos online. %s', config('empleatis.name'));
+        return 'Buscador de empleo, formación y cursos online.';
     }
 
     /**
@@ -73,6 +85,18 @@ class Metatag
             );
         }
 
+        if ($this->section === 'legal.advice') {
+            return 'Aviso legal y condiciones de uso de empleatis.com. Ofertas de empleo y formación. Accede a nuestra bolsa de trabajo, donde podrás encontrar el trabajo que estás buscando.';
+        }
+
+        if ($this->section === 'legal.cookies') {
+            return 'Política de cookies de empleatis.com. Ofertas de empleo y formación. Accede a nuestra bolsa de trabajo, donde podrás encontrar el trabajo que estás buscando.';
+        }
+
+        if ($this->section === 'legal.privacity') {
+            return 'Política de privacidad de empleatis.com. Ofertas de empleo y formación. Accede a nuestra bolsa de trabajo, donde podrás encontrar el trabajo que estás buscando.';
+        }
+
         // Default
         return sprintf(
             'Ofertas de trabajo del %s donde podras buscar trabajos por categorias y por provincia. Accede a nuestra bolsa de empleos seleccionados.',
@@ -89,8 +113,7 @@ class Metatag
             $text,
             $this->category,
             $this->province,
-            $this->language,
-            config('empleatis.name'),
+            $this->language
         );
     }
 
