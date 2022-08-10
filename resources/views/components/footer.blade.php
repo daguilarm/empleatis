@@ -19,5 +19,10 @@
         <x-footer.copyright></x-footer.copyright>
     </div>
 
+    {{-- Hosting --}}
+    <div id="footer-hosting" class="w-full flex justify-center pb-8">
+        <a href="https://www.digitalocean.com/?refcode=507d909fac29&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" alt="DigitalOcean Referral Badge" /></a>
+    </div>
+
 {{-- /Footer --}}
 </footer>
