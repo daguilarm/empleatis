@@ -77,7 +77,7 @@ class Metatag
 
         if ($this->section === 'lenguajes') {
             return sprintf(
-                '¿Quieres pogramar en %s? Accede a nuestras ofertas de trabajo de %s%s, donde podrás encontrar el trabajo que estás buscando programando en %s. ',
+                '¿Quieres pogramar en %s? Accede a nuestras ofertas de trabajo de %s%s, donde podrás encontrar el trabajo que estás buscando programando en %s.',
                 $this->language,
                 $this->category,
                 $this->province,
