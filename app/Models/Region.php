@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $alt_name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- *
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Region all($columns = [])
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Region avg($column)
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Region cache(array $tags = [])

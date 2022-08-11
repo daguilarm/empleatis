@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Offer|null $offers
- *
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Province all($columns = [])
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Province avg($column)
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Province cache(array $tags = [])
