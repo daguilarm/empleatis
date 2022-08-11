@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             PartnerSeeder::class,
             CategorySeeder::class,
             LanguageSeeder::class,
+            OfferSeeder::class,
         ]);
     }
 }

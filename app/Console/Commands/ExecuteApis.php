@@ -11,7 +11,7 @@ class ExecuteApis extends Command
      *
      * @var string
      */
-    protected $signature = 'api:daily';
+    protected $signature = 'api:update';
 
     /**
      * The console command description.
