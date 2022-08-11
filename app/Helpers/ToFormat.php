@@ -46,13 +46,13 @@ if (! function_exists('from_search')) {
             : null;
 
         $searchLocation = $request->get('locations')
-            ? $format('en '.ucfirst($request->get('locations')))
+            ? 'en '. $format(ucfirst($request->get('locations')))
             : null;
 
         // Build the text
         $text = 'Resultados de búsqueda para';
 
-        return sprintf('%s %s %s', $text, $search, $searchLocation);
+        return trim(sprintf('%s %s %s', $text, $search, $searchLocation));
     }
 }
 
