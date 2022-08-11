@@ -8,7 +8,7 @@ uses(RefreshDatabase::class);
 /**
  * filter_workday(array $data)
  */
-test('asserts helper method filter_workday(array $data) change the array', function () {
+test('Asserts helper method filter_workday(array $data) change the array', function () {
 
     // Get the values
     $filter = filter_workday(config('empleatis.workday_type'));
@@ -20,7 +20,7 @@ test('asserts helper method filter_workday(array $data) change the array', funct
  * get_data(?string $data, ?string $alternative = null)
  * default_data()
  */
-test('asserts helper method get_data(?string $data, ?string $alternative = null) has a default value and it is correct', function () {
+test('Asserts helper method get_data(?string $data, ?string $alternative = null) has a default value and it is correct', function () {
 
     // Base values
     $data = get_data(null);
@@ -35,7 +35,7 @@ test('asserts helper method get_data(?string $data, ?string $alternative = null)
 /**
  * to_slug(?string $value)
  */
-test('asserts helper method to_slug(?string $value) format correctly the string', function () {
+test('Asserts helper method to_slug(?string $value) format correctly the string', function () {
 
     // Base values
     $data = 'En un lugar de la MAncha';
@@ -47,7 +47,7 @@ test('asserts helper method to_slug(?string $value) format correctly the string'
 /**
  * to_title(?string $value)
  */
-test('asserts helper method to_title(?string $value) format correctly the string', function () {
+test('Asserts helper method to_title(?string $value) format correctly the string', function () {
 
     // Base values
     $data = 'en-un-lugar-de-la-mancha';
@@ -59,7 +59,7 @@ test('asserts helper method to_title(?string $value) format correctly the string
 /**
  * from_search()
  */
-test('asserts helper method from_search() generate the correct text base on the request', function () {
+test('Asserts helper method from_search() generate the correct text base on the request', function () {
 
     // Do the request
     $this->get('/?search=laravel&locations=murcia');
@@ -78,7 +78,7 @@ test('asserts helper method from_search() generate the correct text base on the 
 /**
  * to_workday(string $data, array $result = [])
  */
-test('asserts helper method to_workday() generate the correct field to be store in DB', function () {
+test('Asserts helper method to_workday() generate the correct field to be store in DB', function () {
     expect(to_workday('1,3'))->toEqual('Temporal, Completa');
     expect(to_workday('2'))->toEqual('Parcial');
 });
@@ -86,7 +86,7 @@ test('asserts helper method to_workday() generate the correct field to be store 
 /**
  * rute_to_category(?object $category)
  */
-test('asserts helper method rute_to_category() generate the correct url', function () {
+test('Asserts helper method rute_to_category() generate the correct url', function () {
     // Seed the database
     $this->seed(CategorySeeder::class);
 
@@ -100,7 +100,7 @@ test('asserts helper method rute_to_category() generate the correct url', functi
 /**
  * rute_to_language(?object $language)
  */
-test('asserts helper method rute_to_language() generate the correct url', function () {
+test('Asserts helper method rute_to_language() generate the correct url', function () {
 
     // Seed the database
     $this->seed(LanguageSeeder::class);
@@ -115,7 +115,7 @@ test('asserts helper method rute_to_language() generate the correct url', functi
 /**
  * link_out(string $uuid)
  */
-test('asserts helper method link_out() generate the correct link out', function () {
+test('Asserts helper method link_out() generate the correct link out', function () {
     // Get the value
     $uuid = str()->uuid();
 
@@ -125,7 +125,7 @@ test('asserts helper method link_out() generate the correct link out', function 
 /**
  * active_url(?object $config, string $remove = 'none')
  */
-test('asserts helper method active_url() generate the correct url', function () {
+test('Asserts helper method active_url() generate the correct url', function () {
     // Create a request
     $config = collect([
         'category' => 18,

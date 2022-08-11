@@ -5,7 +5,7 @@ use App\Facades\Metatag\Metatag;
 /**
  * Metatag::title()
  */
-test('asserts the Facade Metatags generate the right title for home', function () {
+test('Asserts the Facade Metatags generate the right title for home', function () {
 
     // Call the facade...
     $metatag = new Metatag();
@@ -24,7 +24,7 @@ test('asserts the Facade Metatags generate the right title for home', function (
 /**
  * Metatag::title()
  */
-test('asserts the Facade Metatags generate the right title for a full page', function () {
+test('Asserts the Facade Metatags generate the right title for a full page', function () {
 
     // Call the facade...
     $metatag = new Metatag();
@@ -47,7 +47,7 @@ test('asserts the Facade Metatags generate the right title for a full page', fun
 /**
  * Metatag::description()
  */
-test('asserts the Facade Metatags generate the right description for home', function () {
+test('Asserts the Facade Metatags generate the right description for home', function () {
 
     // Call the facade...
     $metatag = new Metatag();
@@ -66,7 +66,7 @@ test('asserts the Facade Metatags generate the right description for home', func
 /**
  * Metatag::description()
  */
-test('asserts the Facade Metatags generate the right description for Cookies Policy', function () {
+test('Asserts the Facade Metatags generate the right description for Cookies Policy', function () {
 
     // Call the facade...
     $metatag = new Metatag();
@@ -85,7 +85,7 @@ test('asserts the Facade Metatags generate the right description for Cookies Pol
 /**
  * Metatag::description()
  */
-test('asserts the Facade Metatags generate the right description for a full page', function () {
+test('Asserts the Facade Metatags generate the right description for a full page', function () {
 
     // Call the facade...
     $metatag = new Metatag();
