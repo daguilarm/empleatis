@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Models\Services\OfferService;
-use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -115,7 +114,6 @@ class Offer extends Model
 {
     use HasFactory;
     use OfferService;
-    use Cachable;
 
     /**
      * The table name
