@@ -14,7 +14,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string $url
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- *
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Partner all($columns = [])
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Partner avg($column)
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Partner cache(array $tags = [])

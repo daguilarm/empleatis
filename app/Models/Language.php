@@ -18,7 +18,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $description
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- *
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Language all($columns = [])
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Language avg($column)
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Language cache(array $tags = [])

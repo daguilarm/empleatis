@@ -47,7 +47,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read \App\Models\Language|null $languages
  * @property-read \App\Models\Province|null $provinces
  * @property-read \App\Models\Region|null $regions
- *
  * @method static \Illuminate\Database\Eloquent\Builder|Offer betweenSalary(?int $salary)
  * @method static \Illuminate\Database\Eloquent\Builder|Offer fulltext(?string $search)
  * @method static \Illuminate\Database\Eloquent\Builder|Offer newModelQuery()
@@ -91,7 +90,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|Offer whereWorkdayType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Offer workday(?array $workday)
  * @mixin \Eloquent
- *
  * @method static \Illuminate\Database\Eloquent\Builder|Offer byId(?int $category, ?int $province, ?int $language)
  * @method static \Illuminate\Database\Eloquent\Builder|Offer noResults()
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer all($columns = [])
