@@ -62,6 +62,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('links');
+        if (app()->environment() === 'testing') {
+            Schema::dropIfExists('links');
+        } else {
+            Schema::connection('analytics')->dropIfExists('links');
+        }
     }
 };
