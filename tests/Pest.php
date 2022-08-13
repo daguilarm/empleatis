@@ -11,7 +11,7 @@
 |
 */
 
-uses(Tests\TestCase::class)->in('Feature');
+uses(Tests\DuskTestCase::class)->in('Browser');
 uses(Tests\TestCase::class)->in('Unit');
 
 /*

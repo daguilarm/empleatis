@@ -1,7 +1,7 @@
 @if($config->get('section') !== 'home')
 
     {{-- Breadcrumbs --}}
-    <div class="relative w-full text-center md:text-left md:h-28 md:px-8 py-4 bg-white my-0.5 shadow">
+    <div dusk="breadcrumbs" class="relative w-full text-center md:text-left md:h-28 md:px-8 py-4 bg-white my-0.5 shadow">
 
         {{-- Seach form --}}
         <h3 class="w-full mb-1 text-xl lg:text-3xl font-normal text-gray-600 italic">

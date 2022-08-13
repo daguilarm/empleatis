@@ -23,6 +23,7 @@
                 type="button"
                 class="{{ $css }} text-white bg-orange-400 hover:bg-orange-700"
                 wire:click="storeCookie('{{ $uuid }}')"
+                id="button-{{ $uuid }}"
             >
                 <x-heroicon-s-save class="inline-block w-4 h-4 mr-1 opacity-70"></x-heroicon-s-save> Guardar
             </button>
@@ -32,6 +33,7 @@
             <button
                 type="button"
                 class="text-white bg-gray-400 cursor-default {{ $css }}"
+                id="button-saved-{{ $uuid }}"
             >
                 <x-heroicon-s-bookmark class="hidden xl:inline-block w-4 h-4 mr-1 opacity-70"></x-heroicon-s-bookmark> Guardado
             </button>

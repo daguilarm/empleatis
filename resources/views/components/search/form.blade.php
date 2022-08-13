@@ -27,8 +27,8 @@
             name="search"
             value="{{ request('search') }}"
             placeholder="Puesto, empresa o palabra clave"
+            dusk="search-by-category"
         >
-        <input type="hidden" wire:model="category">
     </div>
 
     {{-- Search: location --}}
@@ -40,6 +40,7 @@
             name="locations"
             value="{{ request('locations') }}"
             placeholder="Provincia: madrid, murcia,..."
+            dusk="search-by-location"
         >
     </div>
 
@@ -54,6 +55,7 @@
         <button
             type="submit"
             class="inline-flex items-center px-3 py-3 border border-orange-700 shadow-md text-md leading-4 font-medium rounded-md text-white bg-orange-400 hover:bg-orange-500 focus:ring-orange-300 focus:outline-none focus:ring-2 focus:ring-offset-2 "
+            dusk="search-submit"
         >
             {{-- Search icon --}}
             <x-heroicon-s-search class="h-4 w-4 mr-2"></x-heroicon-s-search> Buscar

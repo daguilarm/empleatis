@@ -26,7 +26,7 @@
             @foreach($results as $result)
 
                 {{-- Element --}}
-                <div class="xl:flex mb-4 p-4">
+                <div class="xl:flex mb-4 p-4" id="element-p-{{ request('page', 0) }}-{{ $loop->iteration }}">
 
                     {{-- Left column --}}
                     <div class="w-full xl:w-3/4 pr-4">
