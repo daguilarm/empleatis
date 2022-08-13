@@ -19,7 +19,12 @@ class DatabaseSeeder extends Seeder
             PartnerSeeder::class,
             CategorySeeder::class,
             LanguageSeeder::class,
-            OfferSeeder::class,
         ]);
+
+        if (app()->environment() !== 'production') {
+            $this->call([
+                OfferSeeder::class,
+            ]);
+        }
     }
 }
