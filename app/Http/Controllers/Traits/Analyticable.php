@@ -30,12 +30,12 @@ trait Analyticable
                 'robot' => $this->isRobot(),
                 'platform' => $this->agent->platform(),
                 'browser' => $this->agent->browser(),
-                'category_id' => $offer->category_id,
-                'language_id' => $offer->language_id,
-                'province_id' => $offer->province_id,
+                'category_id' => $offer->category_id ?? 0,
+                'language_id' => $offer->language_id ?? 0,
+                'province_id' => $offer->province_id ?? 0,
                 'salary_year' => $this->salary($offer),
                 'ranking' => $offer->ranking,
-                'workday_type' => $offer->workday_type,
+                'workday_type' => $offer->workday_type ?? 3,
             ]);
         }
     }
