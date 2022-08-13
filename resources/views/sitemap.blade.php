@@ -4,30 +4,30 @@
     <sitemap>
         <loc>{{ route('home') }}</loc>
         <changefreq>daily</changefreq>
-        <lastmod>{{ date('YYYY-MM-DDThh:mmTZD') }}</lastmod>
+        <lastmod>{{ date('Y-m-dTH:i:sP') }}</lastmod>
     </sitemap>
     {{-- Legal --}}
     <sitemap>
         <loc>{{ route('legal.cookies') }}</loc>
         <changefreq>monthly</changefreq>
-        <lastmod>{{ date('YYYY-MM-DDThh:mmTZD', strtotime("first day of previous month")) }}</lastmod>
+        <lastmod>{{ date('Y-m-dTH:i:sP', strtotime("first day of previous month")) }}</lastmod>
     </sitemap>
     <sitemap>
         <loc>{{ route('legal.privacity') }}</loc>
         <changefreq>monthly</changefreq>
-        <lastmod>{{ date('YYYY-MM-DDThh:mmTZD', strtotime("first day of previous month")) }}</lastmod>
+        <lastmod>{{ date('Y-m-dTH:i:sP', strtotime("first day of previous month")) }}</lastmod>
     </sitemap>
     <sitemap>
         <loc>{{ route('legal.advice') }}</loc>
         <changefreq>monthly</changefreq>
-        <lastmod>{{ date('YYYY-MM-DDThh:mmTZD', strtotime("first day of previous month")) }}</lastmod>
+        <lastmod>{{ date('Y-m-dTH:i:sP', strtotime("first day of previous month")) }}</lastmod>
     </sitemap>
     {{-- Categories --}}
     @foreach(\App\Models\Category::all() as $category)
         <sitemap>
             <loc>{{ rute_to_category($category) }}</loc>
             <changefreq>daily</changefreq>
-            <lastmod>{{ date('YYYY-MM-DDThh:mmTZD') }}</lastmod>
+            <lastmod>{{ date('Y-m-dTH:i:sP') }}</lastmod>
         </sitemap>
     @endforeach
     {{-- Languages --}}
@@ -35,7 +35,7 @@
         <sitemap>
             <loc>{{ rute_to_language($language) }}</loc>
             <changefreq>daily</changefreq>
-            <lastmod>{{ date('YYYY-MM-DDThh:mmTZD') }}</lastmod>
+            <lastmod>{{ date('Y-m-dTH:i:sP') }}</lastmod>
         </sitemap>
     @endforeach
 </sitemapindex>
