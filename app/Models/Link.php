@@ -52,8 +52,6 @@ class Link extends Model
     use HasFactory;
     use LinkService;
 
-    protected $connection = 'analytics';
-
     protected $fillable = [
         'offer_id',
         'referer',
