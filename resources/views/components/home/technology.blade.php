@@ -23,7 +23,7 @@
                 {{-- Get the languages --}}
                 @foreach($languages as $language)
                     <li class="w-full text-left inline-block my-1.5">
-                        <a href="{{ url('categorias/programador/18/' . to_slug($language->name) . '/' . $language->id) }}" data-id="{{ $language->id }}" class="border-b border-dotted border-blue-500 text-blue-800 hover:text-orange-700 font-bold">{{ $language->name }}</a>
+                        <a href="{{ url('categorias/programador/18/lenguaje/' . to_slug($language->name) . '/' . $language->id) }}" data-id="{{ $language->id }}" class="border-b border-dotted border-blue-500 text-blue-800 hover:text-orange-700 font-bold">{{ $language->name }}</a>
                     </li>
                     {{-- Generate the columns --}}
                     @if(($loop->iteration%5) === 0 && $loop->iteration < 15)
