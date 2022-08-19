@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 
 class ExecuteApis extends Command
 {
@@ -36,6 +37,9 @@ class ExecuteApis extends Command
         // Jooble.com
         app(\App\Http\Collectors\Jooble\Collector::class)
             ->execute($categories);
+
+        // Reset cache
+        Artisan::call('php artisan modelCache:clear --model=App\Models\Offer');
 
         // Log: success
         $this->info('Successfully updated from the APIs. Database is now populated.');
