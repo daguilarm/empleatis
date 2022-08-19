@@ -33,7 +33,7 @@ test('Asserts the Facade Metatags generate the right title for a full page', fun
     $config = collect([
         'section' => 'lenguajes',
         'categoryName' => 'Programacion',
-        'province'     => 10,
+        'province' => 10,
         'provinceName' => 'Madrid',
         'languageName' => 'Java',
     ]);
@@ -94,7 +94,7 @@ test('Asserts the Facade Metatags generate the right description for a full page
     $config = collect([
         'section' => 'lenguajes',
         'categoryName' => 'Programacion',
-        'province'     => 10,
+        'province' => 10,
         'provinceName' => 'Madrid',
         'languageName' => 'Java',
     ]);

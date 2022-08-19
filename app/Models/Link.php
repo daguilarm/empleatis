@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Models\Services\LinkService;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -25,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $workday_type
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Link isInDatabase(string $id, string $referer)
  * @method static \Illuminate\Database\Eloquent\Builder|Link newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Link newQuery()
@@ -49,7 +49,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Link extends Model
 {
-    use HasFactory;
     use LinkService;
 
     protected $fillable = [

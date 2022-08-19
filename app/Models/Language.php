@@ -2,10 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\BaseModel;
 use App\Models\Services\LanguageService;
-use GeneaLabs\LaravelModelCaching\Traits\Cachable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  * App\Models\Language
@@ -18,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $description
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ *
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Language all($columns = [])
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Language avg($column)
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Language cache(array $tags = [])
@@ -50,10 +49,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Language withCacheCooldownSeconds(?int $seconds = null)
  * @mixin \Eloquent
  */
-class Language extends Model
+class Language extends BaseModel
 {
-    use Cachable;
-    use HasFactory;
     use LanguageService;
 
     /**

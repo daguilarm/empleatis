@@ -2,10 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\BaseModel;
 use App\Models\Services\ProvinceService;
-use GeneaLabs\LaravelModelCaching\Traits\Cachable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
@@ -19,6 +17,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Offer|null $offers
+ *
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Province all($columns = [])
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Province avg($column)
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Province cache(array $tags = [])
@@ -50,10 +49,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Province withCacheCooldownSeconds(?int $seconds = null)
  * @mixin \Eloquent
  */
-class Province extends Model
+class Province extends BaseModel
 {
-    use Cachable;
-    use HasFactory;
     use ProvinceService;
 
     /**

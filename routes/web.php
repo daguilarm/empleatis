@@ -97,8 +97,4 @@ Route::middleware(['auth'])->group(function () {
         ->name('dashboard');
 });
 
-Route::get('/test', function () {
-    return view('test');
-});
-
 require __DIR__.'/auth.php';

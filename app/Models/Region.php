@@ -2,10 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\BaseModel;
 use App\Models\Services\RegionService;
-use GeneaLabs\LaravelModelCaching\Traits\Cachable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  * App\Models\Region
@@ -16,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $alt_name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ *
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Region all($columns = [])
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Region avg($column)
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Region cache(array $tags = [])
@@ -46,10 +45,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Region withCacheCooldownSeconds(?int $seconds = null)
  * @mixin \Eloquent
  */
-class Region extends Model
+class Region extends BaseModel
 {
-    use Cachable;
-    use HasFactory;
     use RegionService;
 
     /**

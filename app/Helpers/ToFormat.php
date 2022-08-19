@@ -46,7 +46,7 @@ if (! function_exists('from_search')) {
             : null;
 
         $searchLocation = $request->get('locations')
-            ? 'en '. $format(ucfirst($request->get('locations')))
+            ? 'en '.$format(ucfirst($request->get('locations')))
             : null;
 
         // Build the text

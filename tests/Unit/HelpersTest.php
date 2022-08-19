@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Database\Seeders\CategorySeeder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
@@ -119,7 +119,7 @@ test('Asserts helper method link_out() generate the correct link out', function 
     // Get the value
     $uuid = str()->uuid();
 
-    expect(link_out($uuid))->toEqual('http://empleatis.test/links/reference/' . $uuid);
+    expect(link_out($uuid))->toEqual('http://empleatis.test/links/reference/'.$uuid);
 });
 
 /**

@@ -12,7 +12,7 @@
     </h4>
 
     @if($config->get('section') !== 'home')
-        <livewire:filters></livewire:filters>
+        <livewire:filters :search="request('search')" :locations="request('locations')"></livewire:filters>
     @endif
 
     {{-- Provinces --}}

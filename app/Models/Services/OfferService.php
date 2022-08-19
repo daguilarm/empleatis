@@ -33,13 +33,13 @@ trait OfferService
     /**
      * Search jobs
      */
-    public function scopeSearchOffers(Builder $query, array $idFields = [], array $optionFields = [], bool $ignoreSearchFields = false): Builder
+    public function scopeSearchOffers(Builder $query, array $idFields = [], array $optionFields = [], bool $ignoreSearchFields = false, ?string $search = null, ?string $locations = null): Builder
     {
         // Get the values
         [$category, $province, $language] = $this->arrayConstructorOrReset($idFields, 3);
         [$workday, $salary] = $this->arrayConstructorOrReset($optionFields, 2);
-        $search = request('search');
-        $locations = request('locations');
+        $search = request('search') ?? $search;
+        $locations = request('locations') ?? $locations;
 
         // Empty results
         if (request('ogp') && $ignoreSearchFields === false && is_null($search) && is_null($locations)) {

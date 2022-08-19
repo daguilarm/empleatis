@@ -2,10 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\BaseModel;
 use App\Models\Services\CategoryService;
-use GeneaLabs\LaravelModelCaching\Traits\Cachable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
@@ -20,6 +18,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Offer|null $offers
+ *
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Category all($columns = [])
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Category avg($column)
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Category cache(array $tags = [])
@@ -52,11 +51,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Category withCacheCooldownSeconds(?int $seconds = null)
  * @mixin \Eloquent
  */
-class Category extends Model
+class Category extends BaseModel
 {
-    use HasFactory;
     use CategoryService;
-    use Cachable;
 
     /**
      * The table name

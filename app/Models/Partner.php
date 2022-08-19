@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use GeneaLabs\LaravelModelCaching\Traits\Cachable;
-use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
+
 
 /**
  * App\Models\Partner
@@ -14,6 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string $url
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ *
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Partner all($columns = [])
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Partner avg($column)
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Partner cache(array $tags = [])
@@ -42,11 +42,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Partner withCacheCooldownSeconds(?int $seconds = null)
  * @mixin \Eloquent
  */
-class Partner extends Model
+class Partner extends BaseModel
 {
-    use Cachable;
-    use HasFactory;
-
     /**
      * The table name
      *

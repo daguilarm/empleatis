@@ -16,7 +16,11 @@ class Search extends Component
 
     public array $optionFields;
 
-    protected $listeners = ['optionFields'];
+    public ?string $search = null;
+
+    public ?string $locations = null;
+
+    protected $listeners = ['optionFields', 'searchFields'];
 
     /**
      * Set default config value
@@ -47,9 +51,19 @@ class Search extends Component
      * Get the option fields for the results.
      * This data came from the event
      */
-    public function optionFields(array $values = [null]): array
+    public function optionFields(array $values = [null])
     {
-        return $this->optionFields = $values;
+        $this->optionFields = $values;
+    }
+
+    /**
+     * Get the search fields for the results.
+     * This data came from the event
+     */
+    public function searchFields(array $values = [null, null])
+    {
+        $this->search = $values[0];
+        $this->locations = $values[1];
     }
 
     /**
@@ -61,9 +75,13 @@ class Search extends Component
         // Delay a 0.3s
         usleep(300000);
 
+
         return Offer::searchOffers(
             $this->idFields(),
-            $this->optionFields
+            $this->optionFields,
+            false,
+            $this->search,
+            $this->locations
         )
             ->get();
     }
@@ -127,17 +145,6 @@ class Search extends Component
             $this->config->get('category'),
             $this->config->get('province'),
             $this->config->get('language'),
-        ];
-    }
-
-    /**
-     * Get the search fields for the results
-     */
-    private function searchFields(): array
-    {
-        return [
-            $this->config->get('search'),
-            $this->config->get('locations'),
         ];
     }
 }
