@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\BaseModel;
 use App\Models\Services\OfferService;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
@@ -112,7 +110,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer truncate()
  * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|Offer withCacheCooldownSeconds(?int $seconds = null)
  */
-class Offer extends Model
+class Offer extends BaseModel
 {
     use OfferService;
 

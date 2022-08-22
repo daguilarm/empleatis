@@ -16,7 +16,8 @@ class Filters extends Component
 
     public ?string $locations_value = null;
 
-    public function mount(?string $search = null, ?string $locations = null) {
+    public function mount(?string $search = null, ?string $locations = null)
+    {
         $this->search_value = $search;
         $this->locations_value = $locations;
     }

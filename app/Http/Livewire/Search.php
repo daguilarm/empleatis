@@ -75,7 +75,6 @@ class Search extends Component
         // Delay a 0.3s
         usleep(300000);
 
-
         return Offer::searchOffers(
             $this->idFields(),
             $this->optionFields,

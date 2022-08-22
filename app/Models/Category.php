@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\BaseModel;
 use App\Models\Services\CategoryService;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
