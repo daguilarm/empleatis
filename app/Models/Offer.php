@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Services\OfferService;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Uuid;
 
 /**
  * App\Models\Offer
@@ -112,7 +113,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Offer extends BaseModel
 {
-    use OfferService;
+    use OfferService, Uuid;
 
     /**
      * The table name
@@ -120,6 +121,20 @@ class Offer extends BaseModel
      * @var string
      */
     protected $table = 'offers';
+
+    /**
+     * The "type" of the auto-incrementing ID.
+     *
+     * @var string
+     */
+    protected $keyType = 'string';
+
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
 
     /**
      * The attributes that should be cast.
