@@ -39,7 +39,7 @@ class ExecuteApis extends Command
             ->execute($categories);
 
         // Reset cache
-        Artisan::call('php artisan modelCache:clear --model=App\Models\Offer');
+        Artisan::call('modelCache:clear', ['--model' => 'App\Models\Offer']);
 
         // Log: success
         $this->info('Successfully updated from the APIs. Database is now populated.');
