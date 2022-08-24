@@ -148,7 +148,37 @@ class Offer extends BaseModel
      *
      * @var array<int, string>
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'code',
+        'title',
+        'description',
+        'requirements',
+        'url',
+        'date',
+        'region_id',
+        'province_id',
+        'locations',
+        'city',
+        'company',
+        'source',
+        'category_id',
+        'language_id',
+        'keywords',
+        'contract_id',
+        'workday_type',
+        'salary',
+        'salary_year',
+        'salary_max',
+        'salary_min',
+        'salary_currency',
+        'experience',
+        'study_id',
+        'ranking',
+        'error_salary',
+        'error_url',
+        'user_id',
+        'partner_id',
+    ];
 
     /**
      * Get the region
