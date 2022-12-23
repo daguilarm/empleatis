@@ -1,2 +1,4 @@
 # empleatis
- Meta buscador de empleo
+ Meta search engine for jobs 
+
+ Build with Laravel, Laravel Livewire, AlpineJS and Tailwind
